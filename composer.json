@@ -1,0 +1,22 @@
+{
+    "name": "shawnrong/avocado",
+    "description": "Laravel spa admin panel based on vuejs",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shawn Rong",
+            "email": "rongshawn@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ShawnRong\\Avocado\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ShawnRong\\Avocado\\Tests\\" : "tests/"
+        }
+    }
+}
