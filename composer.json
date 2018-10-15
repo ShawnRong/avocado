@@ -8,7 +8,9 @@
             "email": "rongshawn@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "tymon/jwt-auth": "1.*@rc"
+    },
     "autoload": {
         "psr-4": {
             "ShawnRong\\Avocado\\" : "src/"
