@@ -28,7 +28,6 @@ class AvocadoServiceProvider extends ServiceProvider
             $loader = AliasLoader::getInstance();
             $loader->alias('JWTAuth', 'Tymon\JWTAuth\Facades\JWTAuth');
             $loader->alias('JWTFactory', 'Tymon\JWTAuth\Facades\JWTFactory');
-
             //Set up config/auth.php
 
             //Set up routes/api.php

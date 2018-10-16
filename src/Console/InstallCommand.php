@@ -30,5 +30,7 @@ class InstallCommand extends Command
         // vendor publish JWT
         $this->call('vendor:publish', ['--provider' => 'Tymon\JWTAuth\Providers\LaravelServiceProvider']);
         $this->call('jwt:secret');
+        // vendor publish Dingo
+        $this->call('vendor:publish', ['--provider' => 'Dingo\Api\Provider\LaravelServiceProvider']);
     }
 }

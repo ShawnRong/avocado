@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "tymon/jwt-auth": "1.*@rc"
+        "tymon/jwt-auth": "1.*@rc",
+        "dingo/api": "2.0.0-alpha2"
     },
     "autoload": {
         "psr-4": {
