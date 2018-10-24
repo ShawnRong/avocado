@@ -60,7 +60,9 @@ class AvocadoServiceProvider extends ServiceProvider
 
     public function registerRouter()
     {
-
+        if(!$this->app->routesAreCached()) {
+            app('router')->middleware('api')->group(__DIR__. 'routes.php');
+        }
     }
 
     public function register()
