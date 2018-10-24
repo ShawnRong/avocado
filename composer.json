@@ -23,5 +23,12 @@
         "psr-4": {
             "ShawnRong\\Avocado\\Tests\\" : "tests/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ShawnRong\\Avocado\\AvocadoServiceProvider"
+            ]
+        }
     }
 }

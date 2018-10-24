@@ -6,6 +6,8 @@
 
 `composer require shawnrong/avocado`
 
+`php artisan vendor:publish --provider="ShawnRong\Avocado\AvocadoServiceProvider"`
+
 `php artisan migrate`
 
 `php db:seed --class=ShawnRong\Avocado\Database\AvocadoTableSeeder`
