@@ -9,8 +9,10 @@
         }
     ],
     "require": {
+        "php": ">=7.0.0",
         "tymon/jwt-auth": "1.*@rc",
-        "dingo/api": "2.0.0-alpha2"
+        "dingo/api": "2.0.0-alpha2",
+        "spatie/laravel-permission": "^2.23"
     },
     "autoload": {
         "psr-4": {
