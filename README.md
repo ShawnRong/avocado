@@ -10,7 +10,8 @@
 
 `php artisan migrate`
 
-`php db:seed --class="ShawnRong\Avocado\Database\AvocadoTableSeeder"`
+`php artisan db:seed --class="ShawnRong\Avocado\Database\AvocadoTableSeeder"`
+
 
 edit `.env` file, add config:
 `API_PREFIX="api"`
@@ -34,3 +35,10 @@ update config/auth.php
 
 `php artisan api:cache`
 
+Add avocado.js to webpack.mix.js
+
+``` javascript
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
+   .js('resources/js/avocado.js', 'public/js');
+```

@@ -42,3 +42,10 @@ $api->version('v1', function($api) {
         $api->resource('permission-groups', 'AdminPermissionGroupController');
     });
 });
+
+$router = app('router');
+$router->namespace('ShawnRong\Avocado\Controllers')->middleware('web')->group(function ($router) {
+    $router->get('avocado', function () {
+        return view('dashboard');
+    });
+});
