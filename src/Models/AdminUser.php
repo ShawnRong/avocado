@@ -12,6 +12,8 @@ class AdminUser extends Authenticatable implements JWTSubject
 
     use Notifiable, HasRoles;
 
+    protected $guard_name = 'admin';
+
     /*
      * Get the identifier that will be stored in the subject claim of the JWT.
      * @return mixed

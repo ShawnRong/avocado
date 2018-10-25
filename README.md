@@ -2,17 +2,35 @@
 ## Single Page Laravel admin panel based on vuejs 
 
 
-### install 
+### Install 
 
 `composer require shawnrong/avocado`
 
-`php artisan vendor:publish --provider="ShawnRong\Avocado\AvocadoServiceProvider"`
-
 `php artisan avocado:install`
+
+`php artisan migrate`
+
+`php db:seed --class="ShawnRong\Avocado\Database\AvocadoTableSeeder"`
 
 edit `.env` file, add config:
 `API_PREFIX="api"`
 
-`php artisan migrate`
+update config/auth.php
 
-`php db:seed --class=ShawnRong\Avocado\Database\AvocadoTableSeeder`
+``` php
+'guards' => [
+    'api' => [
+        'driver' => 'jwt',
+        'provider' => 'admin',
+    ]
+]
+'providers' => [
+    'admin' => [
+        'driver' => 'eloquent',
+        'model' => ShawnRong\Avocado\Models\AdminUser::class,
+    ]
+]
+```
+
+`php artisan api:cache`
+
