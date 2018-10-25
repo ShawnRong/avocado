@@ -4,6 +4,7 @@ namespace ShawnRong\Avocado;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use ShawnRong\Avocado\Commands\InstallCommand;
 
 class AvocadoServiceProvider extends ServiceProvider
 {
@@ -19,10 +20,10 @@ class AvocadoServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/avocado.php' => config_path('avocado.php'),
             ]);
-            //TODO: put commands in register method
-            //            $this->commands([
-            //                InstallCommand::class,
-            //            ]);
+
+            $this->commands([
+                InstallCommand::class,
+            ]);
             //Set up JWT Facade
             $this->app->register('Tymon\JWTAuth\Providers\LaravelServiceProvider');
             $loader = AliasLoader::getInstance();
@@ -44,6 +45,8 @@ class AvocadoServiceProvider extends ServiceProvider
 
         $migrationFiles = [
             'create_admin_table.php',
+            'add_custom_field_to_permission_table.php',
+            'create_permission_groups_table.php',
         ];
 
         $paths = [];
@@ -60,14 +63,17 @@ class AvocadoServiceProvider extends ServiceProvider
 
     public function registerRouter()
     {
-        if(!$this->app->routesAreCached()) {
-            app('router')->middleware('api')->group(__DIR__. 'routes.php');
+        if (!$this->app->routesAreCached()) {
+            app('router')->middleware('api')->group(__DIR__ . '/routes.php');
         }
     }
 
     public function register()
     {
 
+        $this->commands([
+            InstallCommand::class,
+        ]);
         //php artisan db:seed --class=AvocadoTableSeeder
 
         //更新 api.php

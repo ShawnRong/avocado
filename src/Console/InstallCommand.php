@@ -34,5 +34,7 @@ class InstallCommand extends Command
         $this->call('vendor:publish', ['--provider' => 'Dingo\Api\Provider\LaravelServiceProvider']);
         // vendor publish laravel-permission
         $this->call('vendor:publish', ['--provider' => 'Spatie\Permission\PermissionServiceProvider']);
+
+        $this->call('vendor:publish', ['--provider' => 'ShawnRong\Avocado\AvocadoServiceProvider']);
     }
 }
