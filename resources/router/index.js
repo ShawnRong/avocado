@@ -1,28 +1,19 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-Vue.use(Router)
+import Login from '../views/login';
 
-export const constantRouterMap =  [
+Vue.use(Router);
+
+const constantRouterMap = [
   {
+    name: 'Login',
     path: '/login',
-    component: () => import('@/views/login/index')
+    component: Login,
   },
-  {
-    path: '',
-    component: Layout,
-    redirect: 'dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: {
-          title: 'dashboard',
-          icon: 'dashboard',
-          noCache: true
-        }
-      }  
-    ]
-  }
-]
+];
+
+export default new Router({
+  // mode: 'history',  // require service support
+  routes: constantRouterMap,
+});

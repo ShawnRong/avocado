@@ -33,12 +33,10 @@ update config/auth.php
 ]
 ```
 
-`php artisan api:cache`
-
 Add avocado.js to webpack.mix.js
 
 ``` javascript
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .js('resources/js/avocado.js', 'public/js');
+   .js('resources/js/avocaodo/avocado.js', 'public/js');
 ```
