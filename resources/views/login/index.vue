@@ -37,10 +37,10 @@
 
     <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">{{ $t('login.logIn') }}</el-button>
   </el-form>
-<div class="ocean">
+<!-- <div class="ocean">
   <div class="wave"></div>
   <div class="wave"></div>
-</div>
+</div> -->
 </div>
 </template>
 
@@ -92,7 +92,23 @@ export default {
       }
     },
     handleLogin() {
-      console.log("login ");
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.loading = true;
+          this.$store
+            .dispatch("LoginByUsername", this.loginForm)
+            .then(() => {
+              this.loading = false;
+              this.$router.push({ path: this.redirect || "/" });
+            })
+            .catch(() => {
+              this.loading = false;
+            });
+        } else {
+          console.log("error submit");
+          return false;
+        }
+      });
     }
   }
 };

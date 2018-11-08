@@ -4,6 +4,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 import App from './Admin.vue';
 import router from './router';
+import store from './store';
 
 import './styles/index.scss';
 
@@ -17,6 +18,7 @@ Vue.use(ElementUI, {
 const app = new Vue({
   el: '#app',
   router,
+  store,
   i18n,
   render: h => h(App),
 });
