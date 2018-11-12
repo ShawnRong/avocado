@@ -14,4 +14,10 @@ export function loginByUsername(username, password) {
 
 export function logout() {}
 
-export function getUserInfo(token) {}
+export function getUserInfo() {
+  // TODO 获取用户信息 + 角色
+  return request({
+    url: '/api/me',
+    method: 'post',
+  });
+}

@@ -19,7 +19,6 @@ function hasPermission(roles, permissionRoles) {
 const whiteList = ['/login'];
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
   if (getToken()) {
     // has token
     if (to.path === '/login') {
@@ -29,9 +28,11 @@ router.beforeEach((to, from, next) => {
       store
         .dispatch('GetUserInfo')
         .then(res => {
+          // TODO
+          // const roles = res.data.data.roles;
           const roles = res.data.roles;
           store.dispatch('GenerateRoutes', { roles }).then(() => {
-            router.addRoutes(store.getters.addRoutes);
+            router.addRoutes(store.getters.addRouters);
             next({ ...to, replace: true });
           });
         })

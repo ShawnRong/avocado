@@ -12,14 +12,15 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
+    // Do something before request is sent
     if (store.getters.token) {
       config.headers.Authorization = 'Bearer ' + getToken();
-
-      return config;
     }
+    return config;
   },
   error => {
-    console.log(error);
+    // Do something with request error
+    console.log(error); // for debug
     Promise.reject(error);
   }
 );
@@ -28,6 +29,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => response,
   error => {
+    console.log('response interceptor');
     console.log('err' + error);
     Message({
       message: error.message,

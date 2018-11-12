@@ -9,4 +9,9 @@ export default {
     password: 'Password',
     any: 'any',
   },
+  navbar: {
+    dashboard: 'Dashboard',
+    github: 'Github',
+    logOut: 'LogOut',
+  },
 };

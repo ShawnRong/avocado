@@ -5,9 +5,6 @@
 </template>
 <script>
 export default {
-  name: "App",
-  mounted() {
-    console.log("App component mounted");
-  }
+  name: "App"
 };
 </script>

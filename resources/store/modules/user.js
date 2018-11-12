@@ -51,7 +51,7 @@ const user = {
           .then(response => {
             const data = response.data.data;
             commit('SET_TOKEN', data.token);
-            setToken(response.data.data.token);
+            setToken(data.token);
             resolve();
           })
           .catch(error => {
@@ -67,6 +67,9 @@ const user = {
               reject('error');
             }
             const data = response.data;
+            // TODO
+            data.roles = ['admin'];
+            data.introduction = 'hello';
             if (data.roles && data.roles.length > 0) {
               commit('SET_ROLES', data.roles);
             } else {

@@ -9,4 +9,9 @@ export default {
     password: '密码',
     any: '任意',
   },
+  navbar: {
+    dashboard: '控制面板',
+    github: 'Github',
+    logOut: '登出',
+  },
 };

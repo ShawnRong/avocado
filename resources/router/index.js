@@ -41,8 +41,16 @@ export const asyncRouterMap = [
     alwaysShow: true,
     meta: {
       title: 'permission',
-      icon: 'lock',
-      roles: ['admin', 'editor'],
+      icon: 'user-lock',
+      roles: ['admin'],
     },
+    children: [
+      {
+        path: 'page',
+        component: resolve => void require(['../views/permission/page.vue'], resolve),
+        name: 'Permission',
+        meta: { title: 'permission' },
+      },
+    ],
   },
 ];

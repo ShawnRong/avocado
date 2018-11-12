@@ -9,6 +9,7 @@ import store from './store';
 import './styles/index.scss';
 
 import i18n from './lang';
+import './permission'; // Load Perission
 import '@fortawesome/fontawesome-free/js/all';
 
 Vue.use(ElementUI, {
