@@ -28,13 +28,6 @@ class AdminUserController extends BaseController
         return $this->response->item($user, new AdminUserTransformer());
     }
 
-    /**
-     * Get current user info
-     */
-    public function me()
-    {
-        return $this->response->item($this->user, new AdminUserTransformer());
-    }
 
     public function patch(Request $request)
     {

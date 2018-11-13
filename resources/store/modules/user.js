@@ -66,10 +66,7 @@ const user = {
             if (!response.data) {
               reject('error');
             }
-            const data = response.data;
-            // TODO
-            data.roles = ['admin'];
-            data.introduction = 'hello';
+            const data = response.data.data;
             if (data.roles && data.roles.length > 0) {
               commit('SET_ROLES', data.roles);
             } else {

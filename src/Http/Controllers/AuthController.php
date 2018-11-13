@@ -5,6 +5,7 @@ namespace ShawnRong\Avocado\Controllers;
 use Illuminate\Support\Facades\Validator;
 use ShawnRong\Avocado\Models\AdminAuthorization;
 use ShawnRong\Avocado\Transformers\AdminAuthorizationTransformer;
+use ShawnRong\Avocado\Transformers\AdminUserTransformer;
 
 class AuthController extends BaseController
 {
@@ -57,8 +58,15 @@ class AuthController extends BaseController
             new AdminAuthorizationTransformer());
     }
 
+    /**
+     * Get User info with user info&roles
+     */
     public function me()
     {
-        return response()->json(auth('api')->user());
+        $user = auth('api')->user();
+        //Append roles
+        $user->roles = auth('api')->user()->getRoleNames()->toArray();
+
+        return $this->response->item($user, new AdminUserTransformer());
     }
 }
