@@ -2,10 +2,11 @@
 
 namespace ShawnRong\Avocado\Controllers;
 
-use Illuminate\Support\Facades\Validator;
 use ShawnRong\Avocado\Models\AdminAuthorization;
 use ShawnRong\Avocado\Transformers\AdminAuthorizationTransformer;
 use ShawnRong\Avocado\Transformers\AdminUserTransformer;
+use Illuminate\Http\Request;
+use Validator;
 
 class AuthController extends BaseController
 {
@@ -68,5 +69,24 @@ class AuthController extends BaseController
         $user->roles = auth('api')->user()->getRoleNames()->toArray();
 
         return $this->response->item($user, new AdminUserTransformer());
+    }
+
+    /**
+     * Update current user info
+     */
+    public function patch(Request $request)
+    {
+        $validator = Validator::make($request->input(), [
+            'name' => 'string|max:50',
+        ]);
+        if ($validator->fails()) {
+            return $this->errorBadRequest($validator);
+        }
+
+        $user = $this->user();
+        $attributes = array_filter($request->only('name', 'avatar'));
+        $user->update($attributes);
+
+        return $this->response->noContent();
     }
 }

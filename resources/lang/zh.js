@@ -1,6 +1,12 @@
 export default {
   route: {
     dashboard: '首页',
+    permission: '权限',
+    permission_list: '权限列表',
+    role: '角色',
+    role_list: '角色列表',
+    users: '管理用户',
+    users_list: '管理用户列表',
   },
   login: {
     title: '系统登录',
@@ -14,4 +20,20 @@ export default {
     github: 'Github',
     logOut: '登出',
   },
+  name: '名字',
+  email: '邮箱',
+  search: '搜索',
+  createdAt: '创建于',
+  updatedAt: '更新于',
+  actions: '操作',
+  add: '添加',
+  password: '密码',
+  cancel: '取消',
+  confirm: '确认',
+  edit: '编辑',
+  id: 'ID',
+  assignRole: '分配角色',
+  delete: '删除',
+  editSuccess: '编辑成功',
+  success: '成功',
 };

@@ -35,6 +35,44 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
+    path: '/users',
+    component: Layout,
+    redirect: '/users/index',
+    alwaysShow: true,
+    meta: {
+      title: 'users',
+      icon: 'users',
+      roles: ['admin'],
+    },
+    children: [
+      {
+        path: 'page',
+        component: resolve => void require(['../views/user/page.vue'], resolve),
+        name: 'User List',
+        meta: { title: 'users_list' },
+      },
+    ],
+  },
+  {
+    path: '/role',
+    component: Layout,
+    redirect: '/role/index',
+    alwaysShow: true,
+    meta: {
+      title: 'role',
+      icon: 'user-tag',
+      roles: ['admin'],
+    },
+    children: [
+      {
+        path: 'page',
+        component: resolve => void require(['../views/permission/page.vue'], resolve),
+        name: 'Role List',
+        meta: { title: 'role_list' },
+      },
+    ],
+  },
+  {
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
@@ -48,8 +86,8 @@ export const asyncRouterMap = [
       {
         path: 'page',
         component: resolve => void require(['../views/permission/page.vue'], resolve),
-        name: 'Permission',
-        meta: { title: 'permission' },
+        name: 'Permission List',
+        meta: { title: 'permission_list' },
       },
     ],
   },

@@ -65,4 +65,10 @@ class AdminRoleController extends BaseController
 
         return $this->onContent();
     }
+    
+    public function guardNameRoles($guradName)
+    {
+        $roles = Role::query()->where('guard_name', $guradName)->get();
+        return $this->response->item($roles, new AdminRoleTransformer());
+    }
 }

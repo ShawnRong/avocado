@@ -21,6 +21,8 @@ $api->version('v1', function($api) {
         $api->post('logout', 'AuthController@logout');
         $api->post('refresh', 'AuthController@refresh');
         $api->post('me', 'AuthController@me');
+        // Update current user info
+        $api->patch('user', 'AuthController@patch');
 
         // AdminUserController
         // User Lista
@@ -28,16 +30,19 @@ $api->version('v1', function($api) {
         // User Detail
         $api->get('user/{id}', 'AdminUserController@show');
         // User Update name
-        $api->patch('user', 'AdminUserController@patch');
+        $api->patch('user/{id}', 'AdminUserController@patch'); 
         // User Update password
         $api->put('user/password', 'AdminUserController@editPassword');
         // Add User
         $api->post('user/add', 'AdminUserController@store');
         // Delete User
         $api->delete('user/{id}', 'AdminUserController@destroy');
+        $api->get('user/{id}/roles', 'AdminUserController@roles');
+        $api->put('user/{id}/roles', 'AdminUserController@assignRoles');
         $api->resource('roles', 'AdminRoleController');
         $api->get('role/{id}/permissions', 'AdminRoleController@permissions');
         $api->put('role/{id}/permissions', 'AdminRoleController@assignPermissions');
+        $api->get('guard-name-roles/{guardName}', 'AdminRoleController@guardNameRoles');
         $api->resource('permissions', 'AdminPermissionController');
         $api->resource('permission-groups', 'AdminPermissionGroupController');
     });

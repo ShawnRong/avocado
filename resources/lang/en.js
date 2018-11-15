@@ -1,6 +1,12 @@
 export default {
   route: {
     dashboard: 'Dashboard',
+    permission: 'Permission',
+    permission_list: 'Permission List',
+    role: 'Role',
+    role_list: 'Role List',
+    users: 'Users',
+    users_list: 'Users List',
   },
   login: {
     title: 'Login Form',
@@ -14,4 +20,20 @@ export default {
     github: 'Github',
     logOut: 'LogOut',
   },
+  name: 'Name',
+  email: 'Email',
+  search: 'Search',
+  createdAt: 'Created At',
+  updatedAt: 'Updated At',
+  actions: 'Actions',
+  add: 'Add',
+  password: 'Password',
+  cancel: 'Cancel',
+  confirm: 'Confirm',
+  edit: 'Edit',
+  id: 'ID',
+  assignRole: 'Assign Role',
+  delete: 'Delete',
+  editSuccess: 'Edit Success',
+  success: 'Success',
 };

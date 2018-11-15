@@ -2,10 +2,11 @@
 
 namespace ShawnRong\Avocado\Controllers;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use ShawnRong\Avocado\Models\AdminUser;
-use ShawnRong\Avocado\Transformers\AdminUserTransformer;
+use ShawnRong\Avocado\Transformers\AdminUserTransformer; 
+use ShawnRong\Avocado\Transformers\AdminRoleTransformer;
+use Validator;
 
 class AdminUserController extends BaseController
 {
@@ -13,9 +14,21 @@ class AdminUserController extends BaseController
     /**
      * Get all admin users
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = AdminUser::paginate();
+
+        $name = $request->get('name');
+        $email = $request->get('email');
+
+        $users = AdminUser::when($name, function ($query) use ($name) {
+            $query->where('name', 'like', '%' . $name . '%');
+        })
+            ->when($email, function ($query) use ($email) {
+                $query->where('email', 'like', '%' . $email . '%');
+            })
+            ->paginate();
+
+
         return $this->response->paginator($users, new AdminUserTransformer());
     }
 
@@ -29,7 +42,7 @@ class AdminUserController extends BaseController
     }
 
 
-    public function patch(Request $request)
+    public function patch(Request $request, $id)
     {
         $validator = Validator::make($request->input(), [
             'name' => 'string|max:50',
@@ -38,8 +51,11 @@ class AdminUserController extends BaseController
             return $this->errorBadRequest($validator);
         }
 
-        $user       = $this->user();
-        $attributes = array_filter($request->only('name', 'avatar'));
+        $user = AdminUser::query()->findOrFail($id);
+        $attributes = array_filter($request->only('name', 'avatar', 'email', 'password'));
+        $user->update($attributes);
+
+        return $this->response->noContent();
     }
 
     public function editPassword(Request $request)
@@ -104,7 +120,30 @@ class AdminUserController extends BaseController
      */
     public function destroy($id)
     {
-        AdminUser::delete($id);
+        AdminUser::findOrFail($id)->delete($id);
+        return $this->response->noContent();
+    }
+
+    /**
+     * Get user role list
+     */
+    public function roles($id)
+    {
+        $user = AdminUser::findOrFail($id);
+        $roles = $user->getRoleNames();
+
+        return response($roles->toArray());
+    }
+
+    /**
+     * Assign Roles to user
+     */
+    public function assignRoles(Request $request, $id)
+    {
+        $user = AdminUser::findOrFail($id);
+
+        $user->assignRole($request->input('roles', []));
+
         return $this->response->noContent();
     }
 }

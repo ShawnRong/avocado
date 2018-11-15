@@ -8,23 +8,26 @@ export const getAdminUserList = params => {
   });
 };
 
-export const getUserRoles = (id, provider) => {
+export const getUserRoles = id => {
   return request({
-    url: `/api/users/${id}/roles/${provider}`,
+    url: `/api/user/${id}/roles`,
     method: 'get',
   });
 };
 
-export const assignRole = (id, provider, roles) => {
+export const assignRoles = (id, roles) => {
   return request({
-    url: `/api/users/${id}/roles/${provider}`,
+    url: `/api/user/${id}/roles`,
     method: 'put',
+    data: {
+      roles,
+    },
   });
 };
 
 export const addAdminUser = data => {
   return request({
-    url: '/api/users',
+    url: '/api/user/add',
     method: 'post',
     data,
   });
@@ -32,7 +35,7 @@ export const addAdminUser = data => {
 
 export const editAdminUser = (id, data) => {
   return request({
-    url: `/api/users/${id}`,
+    url: `/api/user/${id}`,
     method: 'patch',
     data,
   });
@@ -40,7 +43,7 @@ export const editAdminUser = (id, data) => {
 
 export const deleteAdminUser = id => {
   return request({
-    url: `/api/users/${id}`,
+    url: `/api/user/${id}`,
     method: 'delete',
   });
 };

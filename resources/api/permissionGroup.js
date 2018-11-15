@@ -10,7 +10,7 @@ export const getPermissionGroupList = params => {
   });
 };
 
-export const guradNameForPermissions = guardName => {
+export const guardNameForPermissions = guardName => {
   return request({
     url: `/api/guard-name-for-permissions/${guardName}`,
     method: 'get',

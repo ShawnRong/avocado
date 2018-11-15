@@ -12,7 +12,7 @@ export const getRoleList = params => {
 
 export const guardNameRoles = guardName => {
   return request({
-    url: `/api/guard-name-roles/${guradName}`,
+    url: `/api/guard-name-roles/${guardName}`,
     method: 'get',
   });
 };
