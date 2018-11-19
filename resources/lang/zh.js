@@ -36,4 +36,11 @@ export default {
   delete: '删除',
   editSuccess: '编辑成功',
   success: '成功',
+  permissionGroup: '权限组',
+  guardName: 'Guard Name',
+  displayName: '名称',
+  icon: '图标',
+  sequence: '顺序',
+  description: '描述',
+  deleteSuccess: '删除成功',
 };

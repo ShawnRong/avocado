@@ -36,4 +36,11 @@ export default {
   delete: 'Delete',
   editSuccess: 'Edit Success',
   success: 'Success',
+  permissionGroup: 'Permission Group',
+  guardName: 'Guard Name',
+  displayName: 'Name',
+  icon: 'Icon',
+  sequence: 'Sequence',
+  description: 'Description',
+  deleteSuccess: 'Delete Success',
 };

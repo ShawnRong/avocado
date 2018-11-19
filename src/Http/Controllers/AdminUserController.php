@@ -10,7 +10,7 @@ use Validator;
 
 class AdminUserController extends BaseController
 {
-
+    
     /**
      * Get all admin users
      */

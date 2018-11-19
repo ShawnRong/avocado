@@ -3,6 +3,7 @@
 namespace ShawnRong\Avocado\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use ShawnRong\Avocado\Models\Permission;
 use ShawnRong\Avocado\Requests\AdminPermission\CreateOrUpdateRequest;
 use ShawnRong\Avocado\Transformers\AdminPermissionTransformer;
@@ -10,14 +11,27 @@ use ShawnRong\Avocado\Transformers\AdminPermissionTransformer;
 class AdminPermissionController extends BaseController
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $permissions = tap(Permission::latest(), function ($query) {
-            $query->where(request()->only('name', 'guard_name', 'pg_id'));
-        })->with('group')->paginate();
+        $name = $request->get('name');
+        $permissionGroup = $request->get('permissionGroup');
+        $guardName = $request->get('guardName');
 
-        return $this->response->paginator($permissions,
-            new AdminPermissionTransformer());
+        $permissions = Permission::when($name, function ($query) use ($name) {
+            $query->where('name', 'like', '%' . $name . '%');
+        })
+            ->when($guardName, function ($query) use ($guardName) {
+                $query->where('guard_name', 'like', '%' . $guardName . '%');
+            })
+            ->orWhereHas('group', function ($query) use ($permissionGroup) {
+                $query->where('name', 'like', '%' . $permissionGroup . '%');
+            })
+            ->paginate();
+
+        return $this->response->paginator(
+            $permissions,
+            new AdminPermissionTransformer()
+        );
     }
 
     public function store(CreateOrUpdateRequest $request)

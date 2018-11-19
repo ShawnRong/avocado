@@ -1,41 +1,41 @@
 import request from '../utils/request';
 
-cosnt basicRoute = '/api/permissions';
+const basicRoute = '/api/permissions';
 
 export const loadPermissions = () => {
   return request({
     url: '/api/permission-user-all',
-    method: 'get'
-  })
-}
+    method: 'get',
+  });
+};
 
-export const getPermissionList = (params) => {
+export const getPermissionList = params => {
   return request({
     url: basicRoute,
     method: 'get',
-    params
-  })
-}
+    params,
+  });
+};
 
-export const addPermission = (data) => {
+export const addPermission = data => {
   return request({
     url: basicRoute,
     method: 'post',
-    data
-  })
-}
+    data,
+  });
+};
 
 export const editPermission = (id, data) => {
   return request({
     url: `${basicRoute}/${id}`,
     method: 'put',
-    data
-  })
-}
+    data,
+  });
+};
 
 export const deletePermission = id => {
   return request({
     url: `${basicRoute}/${id}`,
     method: 'delete',
-  })
-}
+  });
+};
