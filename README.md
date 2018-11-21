@@ -1,6 +1,8 @@
 # 🥑Avocado
 ## Single Page Laravel admin panel based on vuejs 
 
+![Screenshot](./screenshot.jpg)
+
 
 ### Install 
 

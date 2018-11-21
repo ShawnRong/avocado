@@ -43,6 +43,7 @@ export const asyncRouterMap = [
       title: 'users',
       icon: 'users',
       roles: ['admin'],
+      permission: ['users.index'],
     },
     children: [
       {
@@ -58,6 +59,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/role/index',
     alwaysShow: true,
+    roles: ['admin'],
     meta: {
       title: 'role',
       icon: 'user-tag',
@@ -77,6 +79,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/permission/index',
     alwaysShow: true,
+    roles: ['admin'],
     meta: {
       title: 'permission',
       icon: 'user-lock',
