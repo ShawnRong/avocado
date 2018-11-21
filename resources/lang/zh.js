@@ -43,4 +43,8 @@ export default {
   sequence: '顺序',
   description: '描述',
   deleteSuccess: '删除成功',
+  assignPermission: '分配权限',
+  toAssign: '待分配',
+  assigned: '已分配',
+  createSuccess: '创建成功',
 };

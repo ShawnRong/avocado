@@ -43,6 +43,7 @@ $api->version('v1', function($api) {
         $api->get('role/{id}/permissions', 'AdminRoleController@permissions');
         $api->put('role/{id}/permissions', 'AdminRoleController@assignPermissions');
         $api->get('guard-name-roles/{guardName}', 'AdminRoleController@guardNameRoles');
+        $api->get('permission-all', 'AdminPermissionController@allPermissions');
         $api->resource('permissions', 'AdminPermissionController');
         $api->resource('permission-groups', 'AdminPermissionGroupController');
     });

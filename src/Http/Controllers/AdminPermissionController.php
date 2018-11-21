@@ -34,6 +34,15 @@ class AdminPermissionController extends BaseController
         );
     }
 
+    public function allPermissions()
+    {
+        $permissions = Permission::all();
+        return $this->response->collection(
+            $permissions,
+            new AdminPermissionTransformer()
+        );
+    }   
+
     public function store(CreateOrUpdateRequest $request)
     {
         $attributes                 = $request->only('pg_id', 'name',

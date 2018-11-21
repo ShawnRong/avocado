@@ -4,7 +4,7 @@ const basicRoute = '/api/permissions';
 
 export const loadPermissions = () => {
   return request({
-    url: '/api/permission-user-all',
+    url: '/api/permission-all',
     method: 'get',
   });
 };

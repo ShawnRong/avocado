@@ -43,4 +43,8 @@ export default {
   sequence: 'Sequence',
   description: 'Description',
   deleteSuccess: 'Delete Success',
+  assignPermission: 'Assign Permission',
+  toAssign: 'To be Assigned',
+  assigned: 'Assigned',
+  createSuccess: 'Create Success',
 };

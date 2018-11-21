@@ -66,7 +66,7 @@ export const asyncRouterMap = [
     children: [
       {
         path: 'page',
-        component: resolve => void require(['../views/permission/page.vue'], resolve),
+        component: resolve => void require(['../views/role/page.vue'], resolve),
         name: 'Role List',
         meta: { title: 'role_list' },
       },

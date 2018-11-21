@@ -11,10 +11,12 @@ use Spatie\Permission\Models\Role;
 class AdminRoleController extends BaseController
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $roles = tap(Role::latest(), function ($query) {
-            $query->where(request()->only('name'));
+        $name = $request->get('name');
+
+        $roles = Role::when($name, function ($query) use ($name) {
+            $query->where('name', 'like', '%' . $name . '%');
         })->paginate();
 
         return $this->response->paginator($roles, new AdminRoleTransformer());
@@ -39,6 +41,11 @@ class AdminRoleController extends BaseController
         $role       = Role::query()->findOrFail($id);
         $attributes = $request->only('name', 'guard_name', 'description');
         $role->update($attributes);
+
+        //sync roles
+        if ($request->input('permissions')) {
+            $role->syncPermissions($request->input('permissions'));
+        }
 
         return $this->response->noContent();
     }
